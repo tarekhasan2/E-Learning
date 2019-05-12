@@ -1,0 +1,58 @@
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="container">
+<div class="row">
+	<div class="col-3">
+		
+	</div>
+
+	<div class="col-6">
+		<div class="post-details-item">
+			<h2>{{ item.title }}</h2></br>
+
+			{% if item.image %}
+				<img src="{{ item.image.url }}" class="img-fluid"/>
+			{% endif %}
+			{% if item.video %}
+				<video width="600" controls="">
+					<source src="{{ item.video.url }}" type="video/mp4">
+				</video>
+			{% endif %}
+			{% if request.user == item.user %}
+				<a href='{% url "lessons:update" item.id %}'><button type="button" class="btn btn-info">Edit</button></a>
+				<a href='{% url "lessons:delete" item.id %}'><button type="button" class="btn btn-danger">Delete</button></a> 
+			
+			{% endif %}
+		</br>
+
+			<h5> {{ item.user }}</h5></br>
+				</br>
+			<p>{{ item.get_markdown }}</p>
+			
+			<p class="lead">Comments</p>
+			<div class="">
+				{% for comment in comments %}
+					<blockquote class="blockquote">
+						<small>{{ comment.content }}</small>
+  						<footer>via {{ comment.user}} | {{ comment.timestamp|timesince }} ago | {% if comment.children.count > 0 %}{{ comment.children.count}} Reply{% if comment.children.count > 1 %}s{% endif %} | {% endif %} <a href="{{ comment.get_absolute_url }}">Reply</a> {% if request.user == comment.user %}<a href="{{ comment.get_delete_url }}">Delete</a>{% endif %}</footer>
+					</blockquote>
+					<hr/>
+
+				{% endfor %}
+			</div>
+			<div>
+				<form method="POST" action="">{% csrf_token %}
+					{{ form|crispy }}
+					<input type="submit" value="Comment" name="" class="btn btn-default">
+				</form>
+			</div>
+
+	</div>
+</div>
+
+{% endblock content %}

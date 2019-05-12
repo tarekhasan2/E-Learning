@@ -1,0 +1,67 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+
+<div class="container"> 
+	<div class="row">
+		<div class="col-sm-3">
+			
+		</div>
+		<div class="col-sm-6" >
+			<h1>ALL Courses</h1>
+
+</br>
+			{% if request.user.is_staff or request.user.is_superuser %}
+				<a href='{% url "courses:create" %}' id="create_button"><button type="button" class="btn btn-primary btn-sm">Create A New Course</button></a>
+			{% endif %}
+			</br>
+		</br>
+
+			{% for course in query_set %}
+				<div class="course">
+						
+						{% if course.image %}
+						<div class="course_image"><img src="{{ course.image.url }}" class="img-fluid" /></div>
+						{% endif %}
+						<div class="course_body">
+							<h3 class="course_title"><a href="{{ course.get_absulte_url }}"><h2>{{ course.title }}</h2></a></h3>
+							<div class="course_teacher">Mr. John Taylor | <h5>{{course.publish}}</h5></div>
+							<div class="course_text">
+								<p>{{course.get_markdown | truncatechars_html:200}}</p>
+							</div>
+						</div>
+				</div>
+
+			{% endfor %}
+			
+			
+<h4>
+
+			<div class="pagination">
+   				<span class="step-links">
+        			{% if query_set.has_previous %}
+            			<a href="?page=1">&laquo; first</a>
+            			<a href="?page={{ query_set.previous_page_number }}">previous</a>
+        			{% endif %}
+
+        			<span class="current">
+           				Page {{ query_set.number }} of {{ query_set.paginator.num_pages }}.
+        			</span>
+
+        			{% if query_set.has_next %}
+            			<a href="?page={{ query_set.next_page_number }}">next</a>
+            			<a href="?page={{ query_set.paginator.num_pages }}">last &raquo;</a>
+        			{% endif %}
+    			</span>
+			</div>
+</h4>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

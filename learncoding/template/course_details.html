@@ -1,0 +1,68 @@
+
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container">
+<div class="row">
+	<div class="col-12 col-md-6">
+		<div class="post-details-item">
+			<h2>{{ item.title }}</h2>
+				
+				
+			</br>
+			</br>
+			<p>{{ item.get_markdown }}</p>
+		</div>
+
+	
+</br>
+</br>
+
+	<h3>Lessons:</h3></br>
+		<div>
+			{% for lesson in lessons %}
+				<a href="{{ lesson.get_absulte_url }}"><button type="button" class="btn-group btn-primary btn-lg btn-block">Lesson: {{ lesson.title }}</button></a>
+			</br>
+			{% endfor %}
+		</div>
+
+		<p class="lead">Comments</p>
+				<div class="">
+					{% for comment in comments %}
+					<blockquote class="blockquote">
+  						<p class="mb-0">{{ comment.content }}</p>
+  						<footer>via {{ comment.user}} | {{ comment.timestamp|timesince }} ago | {% if comment.children.count > 0 %}{{ comment.children.count}} Reply{% if comment.children.count > 1 %}s{% endif %} | {% endif %} <a href="{{ comment.get_absolute_url }}">Reply</a> {% if request.user == comment.user %}<a href="{{ comment.get_delete_url }}">Delete</a>{% endif %}</footer>
+					</blockquote>
+					<hr/>
+
+					{% endfor %}
+				</div>
+			
+			<div>
+				<form method="POST" action="">{% csrf_token %}
+					{{ form|crispy }}
+					<input type="submit" value="Comment" name="" class="btn btn-default">
+				</form>
+			</div>
+		</br>
+	</div>
+
+		<div class="col-12 col-md-6">
+			{% if item.video %}
+				<video width="500" controls="">
+					<source src="{{ item.video.url }}" type="video/mp4">
+				</video>
+			{% endif %}
+			<h5>{{ item.publish}} |Creator: {{ item.user }}</h5>
+			{% if request.user == item.user %}
+				<a href='{% url "courses:update" item.id %}'><button type="button" class="btn btn-info">Edit</button></a>
+				<a href='{% url "courses:delete" item.id %}'><button type="button" class="btn btn-danger">Delete</button></a> 
+				<a href='{% url "lessons:create" item.id %}' id="create_button"><button type="button" class="btn btn-primary btn-sm">Add Leasson</button></a>
+			{% endif %}
+		</div>
+		
+	</div>
+</div>
+{% endblock content %}

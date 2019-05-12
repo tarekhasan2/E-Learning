@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+  <link rel="stylesheet" type="text/css" href='/static/css/base.css' />
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<style>
+		{% block style %}{% endblock style %}
+	</style>
+	{% block head_extra %} {% endblock head_extra %}
+{% load static %}
+</head>
+</head>
+<body>
+    
+      <nav class="navbar navbar-expand-sm sticky-top" style="background-color: #EBF8F4;">
+
+<!-- Links -->
+      <ul class="navbar-nav">
+        <li class="active">
+            <a class="nav-link" href='{% url "home" %}'>Home</a>
+        </li>
+        <li class="">
+          <a class="nav-link" href='{% url "courses:list" %}'>Courses</a>
+        </li>
+        <li class="">
+            <a class="nav-link" href='{% url "blogs:list" %}'>Blog</a>
+        </li>
+        {% if not request.user.is_authenticate %}
+        <li class="">
+            <a class="nav-link" href='{% url "account:login" %}'>Login</a>
+        </li>
+        <li class="">
+            <a class="nav-link" href='{% url "account:register" %}'>Register</a>
+        </li>
+        {% else %}
+        <li class="">
+            <a class="nav-link" href='{% url "account:logout" %}'>Sing up</a>
+        </li>
+        {% endif %}
+      </ul>
+
+    </nav> 
+
+ 
+
+
+  <div class="flex-wrapper">	
+		{% block content %}  {% endblock content %}
+  
+    <footer class="footer">
+    <div class="footer_background" style='background-image:url("{% static "images/counter_background.jpg" %};")'></div>
+    <div class="container">
+      <div class="row footer_row">
+        <div class="col">
+          <div class="footer_content">
+            <div class="row">
+
+              <div class="col-lg-6 footer_col">
+          
+                <!-- Footer About -->
+                <div class="footer_section footer_about">
+                  <div class="footer_logo_container">
+                    <a href="#">
+                      <div class="footer_logo_text">Unic<span>at</span></div>
+                    </a>
+                  </div>
+                  <div class="footer_about_text">
+                    <p>Lorem ipsum dolor sit ametium, consectetur adipiscing elit.</p>
+                  </div>
+                  <div class="footer_social">
+                    <ul>
+                      <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                
+              </div>
+
+              <div class="col-lg-6 footer_col">
+          
+                <!-- Footer Contact -->
+                <div class="footer_section footer_contact">
+                  <div class="footer_title">Contact Us</div>
+                  <div class="footer_contact_info">
+                    <ul>
+                      <li>Email: Info.deercreative@gmail.com</li>
+                      <li>Phone:  +(88) 111 555 666</li>
+                      <li>40 Baria Sreet 133/2 New York City, United States</li>
+                    </ul>
+                  </div>
+                </div>
+                
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </footer>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="http://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.2/marked.min.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		$(".post-details-item img").each(function(){
+
+			$(this).addClass("img-fluid")
+		})
+	})
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+
+{% extends "base.html" %}
+{% block content %}
+
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-3">
+			
+		</div>
+		<div class="col-6">
+			<h1>{{ titel }}</h1>
+			<form method="GET" action="">
+				<div class="input-group">
+					<input type="text" name="q" class="form-control" placeholder="Serach Post" value="{{ request.GET.q }}" />
+					<span class="input-group-btn">
+            	<!--<input class="btn btn-default" type="submit" value="Search" />-->
+            			<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+       			 	</span>
+				</div>
+			</form>
+			{% if request.user.is_staff or request.user.is_superuser %}
+				<a href='{% url "blogs:create" %}' id="create_button"><button type="button" class="btn btn-primary btn-sm">Create A New Course</button></a>
+			{% endif %}
+			{% for post in queryset %}
+			<div class="thumbnail">
+				<div>
+					{% if post.image %}
+						<img src="{{ post.image.url }}" class="img-fluid" />
+					{% endif %}
+					<h1><a href='{{post.get_absulte_url}}'>{{ post.title }}</a></h1>
+					<h5>{{post.publish}} | {{post.user}}</h5></br>
+					{{ post.get_markdown|truncatechars_html:120 }}</br></br>
+				</div>
+			</div>
+			{% endfor %}
+		
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if queryset.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ queryset.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.
+        </span>
+
+        {% if queryset.has_next %}
+            <a href="?page={{ queryset.next_page_number }}">next</a>
+            <a href="?page={{ queryset.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+{% endblock content %}

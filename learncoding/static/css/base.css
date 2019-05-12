@@ -1,0 +1,562 @@
+@charset "utf-8";
+/* CSS Document */
+
+/******************************
+
+[Table of Contents]
+
+1. Fonts
+2. Body and some general stuff
+3. Header
+	3.1 Top Bar
+	3.2 Header Content
+	3.3 Logo
+	3.4 Main Nav
+	3.5 Hamburger
+4. Menu
+5. Section
+6. Home
+7. Features
+8. Courses
+9. Counter
+10. Events
+11. Team
+12. News
+13. Newsletter
+14. Footer
+
+
+
+******************************/
+
+/***********
+1. Fonts
+***********/
+
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400,500,700,900');
+
+/*********************************
+2. Body and some general stuff
+*********************************/
+
+*
+{
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}
+body
+{
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	background: #FFFFFF;
+	color: #a5a5a5;
+	
+}
+div
+{
+	display: block;
+	position: relative;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ul
+{
+	list-style: none;
+	margin-bottom: 0px;
+}
+p
+{
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	line-height: 1.85;
+	font-weight: 400;
+	color: #76777a;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}
+p a
+{
+	display: inline;
+	position: relative;
+	color: inherit;
+	border-bottom: solid 1px #ffa07f;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+p:last-of-type
+{
+	margin-bottom: 0;
+}
+a, a:hover, a:visited, a:active, a:link
+{
+	text-decoration: none;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}
+p a:active
+{
+	position: relative;
+	color: #FF6347;
+}
+p a:hover
+{
+	color: #FFFFFF;
+	background: #ffa07f;
+}
+p a:hover::after
+{
+	opacity: 0.2;
+}
+::selection
+{
+	
+}
+p::selection
+{
+	
+}
+h1{font-size: 48px;}
+h2{font-size: 36px;}
+h3{font-size: 24px;}
+h4{font-size: 18px;}
+h5{font-size: 14px;}
+h1, h2, h3, h4, h5, h6
+{
+	font-family: 'Roboto Slab', serif;
+	font-weight: 700;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	text-shadow: rgba(0,0,0,.01) 0 0 1px;
+	color: #384158;
+	margin-bottom: 0;
+}
+h1::selection, 
+h2::selection, 
+h3::selection, 
+h4::selection, 
+h5::selection, 
+h6::selection
+{
+	
+}
+.wmd-panel{
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+
+.navbar
+{
+	bottom: 0px;
+	height: 70px ;
+	width: 100%;
+	
+
+}
+.navbar-nav
+{
+	display: inline-block;
+
+
+
+}
+.navbar-nav li
+{
+	display: inline-block;
+	position: relative;
+
+
+}
+.navbar-nav li:not(:last-child)
+{
+	margin-right: 44px;
+
+}
+.navbar-nav li a
+{
+
+	font-size: 18px;
+	font-weight: 600;
+	color: #151716;;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.navbar-nav li a:hover,
+.navbar-nav li.active a
+{
+	color: #14bdee;
+}
+.navbar-nav li.active::after
+{
+	display: block;
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 100%;
+	height: 0px;
+	background: #14bdee;
+	content: '';
+}
+
+
+.home
+{
+	top: -240px;
+	width: 100%;
+	height: 850px;
+	bottom: 0px;
+}
+
+.home_slider_background
+{
+	position: absolute;
+	top:0px ;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.home_slider_content
+{
+	position: absolute;
+	top: 42%;
+	left: 10%;
+	width: 100%;
+	height: auto;
+}
+.home_slider_title
+{
+	font-family: 'Roboto Slab', serif;
+	font-size: 60px;
+	font-weight: 700;
+	line-height: 1.2;
+	color: #384158;
+}
+.home_slider_subtitle
+{
+	font-size: 24px;
+	color: #76777a;
+	margin-top: 9px;
+}
+
+.features
+{
+	width: 100%;
+	top: -100px;
+	background: #FFFFFF;
+	padding-top: 0px;
+	padding-bottom: 10px;
+}
+.section_title_container
+{
+	top: -100px;
+	
+}
+.features_row
+{
+	margin-top: 55px;
+}
+.feature
+{
+	width: 100%;
+	padding-top: 30px;
+	padding-bottom: 28px;
+	padding-left: 15px;
+	padding-right: 15px;
+	background: #FFFFFF;
+}
+.feature:hover
+{
+	box-shadow: 0px 5px 40px rgba(29,34,47,0.15);
+}
+.feature_icon
+{
+	height: 55px;
+}
+.feature_icon img
+{
+	max-width: 100%;
+}
+.feature_title
+{
+	position: relative;
+	font-size: 20px;
+	margin-top: 23px;
+}
+.section_title_container
+{
+	top:15px;
+}
+.courses
+{
+
+	width: 100%;
+	padding-top: 93px;
+	padding-bottom: 100px;
+}
+.courses_row
+{
+	margin-top: 45px;
+	top :40px;
+}
+.course
+{
+
+	width: 100%;
+	border-radius: 6px;
+	background: #FFFFFF;
+	box-shadow: 0px 5px 40px rgba(29,34,47,0.15);
+	margin-bottom: 30px;
+
+}
+.course_image
+{
+	width: 100%;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	overflow: hidden;
+}
+.course_image img
+{
+	max-width: 100%;
+}
+.course_body
+{
+	padding-top: 22px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-bottom: 23px;
+}
+.course_title a
+{
+	font-family: 'Roboto Slab', serif;
+	font-size: 20px;
+	color: #384158;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.course_title a:hover
+{
+	color: #14bdee;
+}
+.course_teacher
+{
+	font-size: 15px;
+	font-weight: 400;
+	color: #384158;
+	margin-top: 6px;
+}
+.course_text
+{
+	margin-top: 13px;
+}
+.course_footer
+{
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.course_footer_content
+{
+	width: 100%;
+	border-top: solid 1px #e5e5e5;
+	padding-top: 9px;
+	padding-bottom: 11px;
+}
+.course_info
+{
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 400;
+	color: #55555a;
+}
+.course_info:first-child
+{
+	margin-right: 18px;
+}
+.course_info i
+{
+	color: #ffc80a;
+}
+.course_price
+{
+	font-family: 'Roboto Slab', serif;
+	font-size: 20px;
+	font-weight: 700;
+	color: #14bdee;
+}
+.course_price span
+{
+	font-family: 'Roboto Slab', serif;
+	font-size: 14px;
+	font-weight: 400;
+	text-decoration: line-through;
+	color: #b5b8be;
+	margin-right: 10px;
+}
+.courses_button
+{
+	width: 210px;
+	height: 46px;
+	border-radius: 3px;
+	background: #14bdee;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 41px;
+	box-shadow: 0px 5px 40px rgba(29,34,47,0.15);
+}
+.courses_button:hover
+{
+	box-shadow: 0px 5px 40px rgba(29,34,47,0.45);
+}
+.courses_button a
+{
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+	text-transform: uppercase;
+	line-height: 46px;
+	color: #FFFFFF;
+}
+/*********************************
+14. Footer
+*********************************/
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between
+}
+.footer
+{
+	display: block;
+	position: relative;
+	width: 100%;
+	background: #1e2434;
+	padding-top: 80px;
+}
+.footer_background
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+.footer_content
+{
+	padding-bottom: 10px;
+}
+.footer_logo_text
+{
+	font-family: 'Roboto Slab', serif;
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 0.5;
+	color: #FFFFFF;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.footer_logo_text span
+{
+	color: #14bdee;
+}
+.footer_title
+{
+	font-family: 'Roboto Slab', serif;
+	font-size: 26px;
+	font-weight: 700;
+	color: #FFFFFF;
+	line-height: 0.40;
+}
+.footer_logo_container
+{
+	margin-top: -30px;
+}
+.footer_about_text
+{
+	margin-top: 25px;
+}
+.footer_about_text p
+{
+	color: #FFFFFF;
+}
+.footer_social
+{
+	margin-top: 23px;
+}
+.footer_social ul li
+{
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	background: #4b505d;
+	border-radius: 50%;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
+.footer_social ul li:not(:last-child)
+{
+	margin-right: 6px;
+}
+.footer_social ul li a
+{
+	display: block;
+	position: relative;
+	text-align: center;
+}
+.footer_social ul li a i
+{
+	color: #FFFFFF;
+	line-height: 45px;
+}
+.footer_social ul li:hover
+{
+	background: #14bdee;
+}
+.footer_contact
+{
+	padding-left: 36px;
+	margin-top: 10px;
+}
+.footer_contact_info
+{
+	margin-top: 15px;
+}
+.footer_contact_info ul li
+{
+	font-size: 14px;
+	font-weight: 400;
+	color: #b5b8be;
+}
+.footer_contact_info ul li:not(:last-child)
+{
+	margin-bottom: 15px;
+}
